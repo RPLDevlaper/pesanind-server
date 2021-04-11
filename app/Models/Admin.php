@@ -9,29 +9,24 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $guard = 'user';
+    protected $guard = 'admin';
 
-    protected $table = 'users';
+    protected $table = 'admin';
 
-    protected $fillable = [ 'name', 'email', 'password', ];
+    protected $fillable = [ 'username', 'email', 'status', 'avatar' ];
 
-    protected $hidden = [ 'password', 'remember_token', ];
+    protected $hidden = [ 'password', 'remember_token' ];
 
-    protected $casts = [
+    protected $cast = [
         'email_verified_at' => 'datetime',
     ];
 
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value); 
-    }
-
-    public function Order()
-    {
-        $this->hasMany(OrderHospital::class);
     }
 }

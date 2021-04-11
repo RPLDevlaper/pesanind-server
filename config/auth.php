@@ -46,6 +46,37 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'user-api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+        
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
+
+        'super_admin' => [
+            'driver' => 'session',
+            'provider' => 'super_admins',
+        ],
+
+        'super_admin-api' => [
+            'driver' => 'token',
+            'provider' => 'super_admins'
+        ]
     ],
 
     /*
@@ -70,6 +101,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'super_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SuperAdmin::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
